@@ -1,0 +1,123 @@
+main {
+  width: 100%;
+
+  margin: 0 auto;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  h1 {
+    margin: 56px 0 0 0;
+
+    font-style: normal;
+    font-weight: 700;
+    font-size: 40px;
+    line-height: 100%;
+  }
+
+  .container_main {
+    width: 100%;
+
+    padding-left: 12px;
+
+    display: flex;
+    justify-content: space-evenly;
+    gap: 24px;
+  }
+
+  table {
+    margin-top: 80px;
+    flex: 1;
+
+    thead {
+      th {
+        text-align: left;
+        text-transform: uppercase;
+        color: rgb(83, 83, 83);
+      }
+    }
+
+    tbody {
+      .td_price,
+      .td_total,
+      .td_X {
+        padding-left: 20px;
+      }
+    }
+  }
+
+  .div_product {
+    padding: 24px;
+
+    display: flex;
+    gap: 12px;
+
+    div {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+
+      .product_name {
+        font-style: normal;
+        font-weight: 700;
+        font-size: 16px;
+      }
+
+      .product_color {
+        font-style: normal;
+        font-weight: 500;
+        font-size: 12px;
+        color: rgb(83, 83, 83);
+      }
+    }
+
+    .img {
+      width: 80px;
+      height: 80px;
+    }
+  }
+
+  .product_quantity {
+    text-align: center;
+
+    .button_fewer {
+      height: 28px;
+      width: 28px;
+
+      font-size: 24px;
+
+      margin-right: 12px;
+
+      background-color: transparent;
+
+      border: none;
+      cursor: pointer;
+    }
+
+    .button_more {
+      height: 28px;
+      width: 28px;
+
+      font-size: 24px;
+
+      margin-left: 12px;
+
+      background-color: transparent;
+
+      border: none;
+      cursor: pointer;
+    }
+  }
+
+  .button_X {
+    background-color: transparent;
+
+    border: none;
+    cursor: pointer;
+  }
+
+  aside {
+    min-width: 500px;
+  }
+}
