@@ -1,8 +1,8 @@
 import { Products } from "../../data/produtos";
 
+import { FaArrowRight } from "react-icons/fa";
+
 import X from "../../assets/icon_X.svg";
-import Minus from "../../assets/icon_Minus.svg";
-import Plus from "../../assets/icon_Plus.svg";
 
 import "./styles.scss";
 
@@ -50,7 +50,30 @@ export default function Main() {
           </tbody>
         </table>
         <aside>
-          <h1>sadds</h1>
+          <h2>Resumo da compra</h2>
+          <div className="info">
+            <div className="div_subTotal">
+              <span>Sub-total</span>
+              <span>R$ 318</span>
+            </div>
+
+            <div className="div_Frete">
+              <span>Frete</span>
+              <span>Gratuito</span>
+            </div>
+
+            <div>
+              <button className="button_cupom">
+                Adicionar cupom de desconto
+                <FaArrowRight size={12} />
+              </button>
+            </div>
+          </div>
+          <div className="div_total">
+            <span>Total</span>
+            <span>R$ 319</span>
+          </div>
+          <button className="button_compra">Finalizar Compra</button>
         </aside>
       </div>
     </main>

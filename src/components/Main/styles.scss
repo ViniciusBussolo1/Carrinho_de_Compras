@@ -26,6 +26,7 @@ main {
     gap: 24px;
   }
 
+  //table
   table {
     margin-top: 80px;
     flex: 1;
@@ -112,12 +113,87 @@ main {
 
   .button_X {
     background-color: transparent;
+    border-radius: 40%;
 
     border: none;
     cursor: pointer;
   }
 
+  //aside
   aside {
     min-width: 500px;
+
+    padding: 20px 20px;
+
+    max-width: 470px;
+    padding-top: 40px;
+
+    h2 {
+      margin: 0;
+    }
+
+    .info {
+      width: 100%;
+      margin-top: 40px;
+
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+
+      .div_subTotal,
+      .div_Frete {
+        display: flex;
+        justify-content: space-between;
+
+        span {
+          font-style: normal;
+          font-size: 16px;
+        }
+      }
+
+      .button_cupom {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+
+        padding: 0;
+
+        color: green;
+        background-color: transparent;
+        border: none;
+
+        font-style: normal;
+        font-size: 16px;
+        cursor: pointer;
+      }
+    }
+
+    .div_total {
+      width: 100%;
+
+      margin-top: 24px;
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      padding: 12px 0 12px 0;
+
+      font-size: 24px;
+    }
+
+    .button_compra {
+      width: 100%;
+
+      margin-top: 20px;
+      padding: 20px;
+
+      background-color: green;
+      border: none;
+      color: white;
+
+      font-size: 20px;
+      cursor: pointer;
+    }
   }
 }
