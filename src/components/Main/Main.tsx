@@ -1,12 +1,19 @@
+import { useState } from "react";
+
 import { Products } from "../../data/produtos";
 
-import { FaArrowRight } from "react-icons/fa";
+import { FaArrowRight, FaTimes } from "react-icons/fa";
 
-import X from "../../assets/icon_X.svg";
-
+import Quantity from "../Quantity/Quantity";
 import "./styles.scss";
 
 export default function Main() {
+  const [quantity, setQuantity] = useState(0);
+
+  function handleQuantity(numberQuantity: any) {
+    setQuantity(numberQuantity);
+  }
+
   return (
     <main>
       <h1>Seu Carrinho</h1>
@@ -23,29 +30,7 @@ export default function Main() {
           </thead>
           <tbody>
             {Products.map((product, index) => (
-              <tr key={index}>
-                <td>
-                  <div className="div_product">
-                    <img className="img" src={product.img} alt="" />
-                    <div>
-                      <span className="product_name">{product.name}</span>
-                      <span className="product_color">{product.color}</span>
-                    </div>
-                  </div>
-                </td>
-                <td className="td_price">R$ {product.price}</td>
-                <td className="product_quantity">
-                  <button className="button_fewer">-</button>
-                  <span>2</span>
-                  <button className="button_more">+</button>
-                </td>
-                <td className="td_total">R$ 240</td>
-                <td className="td_X">
-                  <button className="button_X">
-                    <img src={X} alt="" />
-                  </button>
-                </td>
-              </tr>
+              <Quantity product={product} key={index} event={handleQuantity} />
             ))}
           </tbody>
         </table>

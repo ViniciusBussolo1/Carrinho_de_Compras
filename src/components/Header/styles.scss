@@ -17,6 +17,7 @@ header {
 
       li {
         list-style: none;
+        cursor: pointer;
       }
     }
   }
@@ -26,6 +27,11 @@ header {
     justify-content: center;
     align-items: center;
     gap: 24px;
+
+    span,
+    img {
+      cursor: pointer;
+    }
 
     .info_card {
       display: flex;

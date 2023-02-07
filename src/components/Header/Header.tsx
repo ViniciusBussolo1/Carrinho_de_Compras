@@ -1,4 +1,4 @@
-import Search from "../../assets/icon_Search.svg";
+import { FaSearch } from "react-icons/fa";
 import "./styles.scss";
 
 export default function Header() {
@@ -15,7 +15,7 @@ export default function Header() {
       <div className="div_main">
         <span>LOG IN</span>
 
-        <img src={Search} alt="search icon " />
+        <FaSearch size={17} />
 
         <div className="info_card">
           <div>CARD</div>
