@@ -1,18 +1,66 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
-import { Products } from "../../data/produtos";
+import { api } from "../../Api";
 
-import { FaArrowRight, FaTimes } from "react-icons/fa";
+import { FaArrowRight } from "react-icons/fa";
 
-import Quantity from "../Quantity/Quantity";
 import "./styles.scss";
+import ItemsTable from "../ItemsTable/ItemsTable";
+
+export interface productsProps {
+  _id?: string;
+  name: string;
+  image: string;
+  color: string;
+  price: string;
+  quantity: number;
+}
 
 export default function Main() {
-  const [quantity, setQuantity] = useState(0);
+  const [products, setProducts] = useState<productsProps[]>([]);
 
-  function handleQuantity(numberQuantity: any) {
-    setQuantity(numberQuantity);
+  async function fetchData() {
+    let response = await api.get("/item");
+
+    setProducts(response.data);
   }
+
+  async function handleQuantity(item: productsProps, value: string) {
+    let newQuantity = item.quantity;
+
+    if (value === "add") {
+      newQuantity += 1;
+    } else if (value == "remove") {
+      if (newQuantity === 1) {
+        return;
+      }
+      newQuantity -= 1;
+    }
+
+    const newData = { ...item, quantity: newQuantity };
+    delete newData._id;
+
+    let response = await api.put(`/item/${item._id}`, newData);
+
+    fetchData();
+  }
+
+  function handleTotal() {
+    let total = 0;
+
+    for (let item of products) {
+      let price = parseInt(item.price);
+      total += price * item.quantity;
+    }
+
+    return total;
+  }
+
+  const getTotal = handleTotal();
+
+  useEffect(() => {
+    fetchData();
+  }, []);
 
   return (
     <main>
@@ -29,8 +77,12 @@ export default function Main() {
             </tr>
           </thead>
           <tbody>
-            {Products.map((product, index) => (
-              <Quantity product={product} key={index} event={handleQuantity} />
+            {products.map((item, index) => (
+              <ItemsTable
+                item={item}
+                key={index}
+                handleQuantity={handleQuantity}
+              />
             ))}
           </tbody>
         </table>
@@ -39,7 +91,7 @@ export default function Main() {
           <div className="info">
             <div className="div_subTotal">
               <span>Sub-total</span>
-              <span>R$ 318</span>
+              <span>R$ {getTotal}</span>
             </div>
 
             <div className="div_Frete">
@@ -56,7 +108,7 @@ export default function Main() {
           </div>
           <div className="div_total">
             <span>Total</span>
-            <span>R$ 319</span>
+            <span>R$ {getTotal}</span>
           </div>
           <button className="button_compra">Finalizar Compra</button>
         </aside>
